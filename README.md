@@ -1,9 +1,9 @@
 # Stellar
-
+ 
 ## Running the App
 - Go to [https://snack.expo.dev/@paradoxflame/stellar](https://snack.expo.dev/@paradoxflame/stellar)
 - Click on iOS or Android
-- Interact with the app like you'd do on a phone
+-  Interact with the app like you'd do on a phone
 
 ## What Is Our App About?
 
