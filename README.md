@@ -13,7 +13,7 @@
 
 ## Tools Used
 - Snack
-- Kapwing
+- Kapwing 
 - GIMP
 
 ## Contributers
