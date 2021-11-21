@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -9,8 +9,7 @@ import {
   StatusBar,
   ImageBackground,
   Image,
-} from 'react-native';
-
+} from "react-native";
 
 export default class HomeScreen extends Component {
   render() {
@@ -18,43 +17,50 @@ export default class HomeScreen extends Component {
       <View style={styles.container}>
         <SafeAreaView style={styles.droidSafeArea} />
         <ImageBackground
-          source={require('../Assets/bg.png')}
-          style={styles.backgroundImage}>
+          source={require("../Assets/bg.png")}
+          style={styles.backgroundImage}
+        >
           <View style={styles.titleBar}>
             <Text style={styles.titleText}>Stellar</Text>
           </View>
 
           <TouchableOpacity
             style={styles.routeCard}
-            onPress={() => this.props.navigation.navigate('IssLocation')}>
+            onPress={() => this.props.navigation.navigate("IssLocation")}
+          >
             <Text style={styles.routeText}>ISS Location</Text>
-            <Text style={styles.knowMore}>{'Know More --->'}</Text>
+            <Text style={styles.knowMore}>{"Know More --->"}</Text>
             <Text style={styles.bgDigit}></Text>
             <Image
-              source={require('../Assets/iss_icon.png')}
-              style={styles.iconImage}></Image>
+              source={require("../Assets/iss_icon.png")}
+              style={styles.iconImage}
+            ></Image>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.routeCard}
-            onPress={() => this.props.navigation.navigate('Meteors')}>
+            onPress={() => this.props.navigation.navigate("Meteors")}
+          >
             <Text style={styles.routeText}>Meteors</Text>
-            <Text style={styles.knowMore}>{'Know More --->'}</Text>
+            <Text style={styles.knowMore}>{"Know More --->"}</Text>
             <Text style={styles.bgDigit}></Text>
             <Image
-              source={require('../Assets/meteor_icon.png')}
-              style={styles.iconImage}></Image>
+              source={require("../Assets/meteor_icon.png")}
+              style={styles.iconImage}
+            ></Image>
           </TouchableOpacity>
-  
+
           <TouchableOpacity
             style={styles.routeCard}
-            onPress={() => this.props.navigation.navigate('Updates')}>
+            onPress={() => this.props.navigation.navigate("Updates")}
+          >
             <Text style={styles.routeText}>Updates</Text>
-            <Text style={styles.knowMore}>{'Know More --->'}</Text>
+            <Text style={styles.knowMore}>{"Know More --->"}</Text>
             <Text style={styles.bgDigit}></Text>
             <Image
-              source={require('../Assets/rocket_icon.png')}
-              style={styles.iconImage}></Image>
+              source={require("../Assets/rocket_icon.png")}
+              style={styles.iconImage}
+            ></Image>
           </TouchableOpacity>
         </ImageBackground>
       </View>
@@ -67,11 +73,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   droidSafeArea: {
-    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover',
+    resizeMode: "cover",
   },
   routeCard: {
     flex: 0.25,
@@ -79,43 +85,43 @@ const styles = StyleSheet.create({
     marginRight: 50,
     marginTop: 50,
     borderRadius: 30,
-    backgroundColor: 'black',
+    backgroundColor: "black",
   },
   titleBar: {
     flex: 0.15,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   titleText: {
     fontSize: 40,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
   routeText: {
     fontSize: 35,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
     marginTop: 75,
     paddingLeft: 30,
   },
   knowMore: {
     paddingLeft: 30,
-    color: 'red',
+    color: "red",
     fontSize: 15,
   },
   bgDigit: {
-    position: 'absolute',
-    color: '#6600db',
+    position: "absolute",
+    color: "#6600db",
     fontSize: 150,
     right: 20,
     bottom: -15,
     zIndex: -1,
   },
   iconImage: {
-    position: 'absolute',
+    position: "absolute",
     height: 200,
     width: 200,
-    resizeMode: 'contain',
+    resizeMode: "contain",
     right: 20,
     top: -80,
   },

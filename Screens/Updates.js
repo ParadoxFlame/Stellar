@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -12,10 +12,10 @@ import {
   TouchableOpacity,
   Linking,
   Image,
-} from 'react-native';
-import axios from 'axios';
-import MyHeader from '../Components/MyHeader';
-import { withSafeAreaInsets } from 'react-native-safe-area-context';
+} from "react-native";
+import axios from "axios";
+import MyHeader from "../Components/MyHeader";
+import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 export default class UpdateScreen extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ export default class UpdateScreen extends Component {
 
   getArticles = () => {
     axios
-      .get('https://api.spaceflightnewsapi.net/v3/articles')
+      .get("https://api.spaceflightnewsapi.net/v3/articles")
       .then((response) => {
         this.setState({ articles: response.data });
         this.getReports();
@@ -45,7 +45,7 @@ export default class UpdateScreen extends Component {
 
   getReports = () => {
     axios
-      .get('https://api.spaceflightnewsapi.net/v3/reports')
+      .get("https://api.spaceflightnewsapi.net/v3/reports")
       .then((response) => {
         this.setState({ reports: response.data });
         this.getBlogs();
@@ -57,7 +57,7 @@ export default class UpdateScreen extends Component {
 
   getBlogs = () => {
     axios
-      .get('https://api.spaceflightnewsapi.net/v3/blogs')
+      .get("https://api.spaceflightnewsapi.net/v3/blogs")
       .then((response) => {
         this.setState({ blogs: response.data });
       })
@@ -69,12 +69,12 @@ export default class UpdateScreen extends Component {
   renderItem = ({ item }) => {
     let width = 50;
     let url;
-    if (item.type == 'Report') {
-      url = require('../Assets/iss_icon.png');
+    if (item.type == "Report") {
+      url = require("../Assets/iss_icon.png");
     } else {
-      url = require('../Assets/blog_icon.png');
+      url = require("../Assets/blog_icon.png");
     }
-    if (item.type == 'Article') {
+    if (item.type == "Article") {
       console.log(item.featured_image);
       return (
         <TouchableOpacity
@@ -83,12 +83,14 @@ export default class UpdateScreen extends Component {
             Linking.openURL(item.url).catch((err) =>
               console.error("Couldn't load page", err)
             )
-          }>
+          }
+        >
           <Text style={styles.cardTitle}>{item.title}</Text>
           <View style={styles.iconContainer}>
             <Image
               source={{ uri: item.imageUrl }}
-              style={{ width: '100%', height: 100 }}></Image>
+              style={{ width: "100%", height: 100 }}
+            ></Image>
           </View>
         </TouchableOpacity>
       );
@@ -100,7 +102,8 @@ export default class UpdateScreen extends Component {
             Linking.openURL(item.url).catch((err) =>
               console.error("Couldn't load page", err)
             )
-          }>
+          }
+        >
           <Text style={styles.cardTitle}>{item.title}</Text>
           <View style={styles.iconContainer}>
             <Image source={url} style={{ width: width, height: width }}></Image>
@@ -121,9 +124,9 @@ export default class UpdateScreen extends Component {
   };
 
   render() {
-    let articles = this.addFlag(this.state.articles, 'Article');
-    let reports = this.addFlag(this.state.reports, 'Report');
-    let blogs = this.addFlag(this.state.blogs, 'Blog');
+    let articles = this.addFlag(this.state.articles, "Article");
+    let reports = this.addFlag(this.state.reports, "Report");
+    let blogs = this.addFlag(this.state.blogs, "Blog");
     let events = articles.concat(reports).concat(blogs);
     events = events.sort(function (a, b) {
       return new Date(b.published_date) - new Date(a.published_date);
@@ -133,9 +136,10 @@ export default class UpdateScreen extends Component {
         <View
           style={{
             flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Text>Loading</Text>
         </View>
       );
@@ -144,8 +148,9 @@ export default class UpdateScreen extends Component {
         <View style={styles.container}>
           <SafeAreaView style={styles.droidSafeArea} />
           <ImageBackground
-            source={require('../Assets/bg.png')}
-            style={styles.backgroundImage}>
+            source={require("../Assets/bg.png")}
+            style={styles.backgroundImage}
+          >
             <View style={styles.titleBar}>
               <Text style={styles.titleText}>Updates</Text>
             </View>
@@ -157,7 +162,7 @@ export default class UpdateScreen extends Component {
               />
             </View>
           </ImageBackground>
-          <MyHeader navigation = {this.props.navigation} />
+          <MyHeader navigation={this.props.navigation} />
         </View>
       );
     }
@@ -169,43 +174,43 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   droidSafeArea: {
-    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover',
+    resizeMode: "cover",
   },
   titleBar: {
     flex: 0.15,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   titleText: {
     fontSize: 30,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
   eventContainer: {
     flex: 0.85,
   },
   listContainer: {
-    backgroundColor: 'rgba(52, 52, 52, 0.5)',
-    justifyContent: 'center',
+    backgroundColor: "rgba(52, 52, 52, 0.5)",
+    justifyContent: "center",
     marginLeft: 10,
     marginRight: 10,
     marginTop: 5,
     borderRadius: 10,
-    backgroundColor: 'rgba(52, 52, 52, 0.5)',
+    backgroundColor: "rgba(52, 52, 52, 0.5)",
     padding: 10,
   },
   cardTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
   iconContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     margin: 20,
   },
 });

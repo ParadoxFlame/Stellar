@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -11,10 +11,10 @@ import {
   Image,
   ImageBackground,
   Dimensions,
-} from 'react-native';
-import axios from 'axios';
-import { RFValue } from 'react-native-responsive-fontsize';
-import MyHeader from '../Components/MyHeader';
+} from "react-native";
+import axios from "axios";
+import { RFValue } from "react-native-responsive-fontsize";
+import MyHeader from "../Components/MyHeader";
 
 export default class MeteorScreen extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class MeteorScreen extends Component {
   getMeteors = () => {
     axios
       .get(
-        'https://api.nasa.gov/neo/rest/v1/feed?api_key=KU14wyb7QsNa31E9VTI88l0pNcJ50kaca1PSB8pX'
+        "https://api.nasa.gov/neo/rest/v1/feed?api_key=KU14wyb7QsNa31E9VTI88l0pNcJ50kaca1PSB8pX"
       )
       .then((response) => {
         this.setState({ meteors: response.data.near_earth_objects });
@@ -47,16 +47,16 @@ export default class MeteorScreen extends Component {
     let meteor = item;
     let bg_img, speed, size;
     if (meteor.threat_score <= 30) {
-      bg_img = require('../Assets/meteor_bg1.png');
-      speed = require('../Assets/meteor_speed3.gif');
+      bg_img = require("../Assets/meteor_bg1.png");
+      speed = require("../Assets/meteor_speed3.gif");
       size = 100;
     } else if (meteor.threat_score <= 75) {
-      bg_img = require('../Assets/meteor_bg2.png');
-      speed = require('../Assets/meteor_speed3.gif');
+      bg_img = require("../Assets/meteor_bg2.png");
+      speed = require("../Assets/meteor_speed3.gif");
       size = 150;
     } else {
-      bg_img = require('../Assets/meteor_bg3.png');
-      speed = require('../Assets/meteor_speed3.gif');
+      bg_img = require("../Assets/meteor_bg3.png");
+      speed = require("../Assets/meteor_speed3.gif");
       size = 200;
     }
     return (
@@ -68,35 +68,38 @@ export default class MeteorScreen extends Component {
               style={{
                 width: 200,
                 height: 200,
-                alignSelf: 'center',
-              }}></Image>
+                alignSelf: "center",
+              }}
+            ></Image>
             <View style={styles.infoContainer}>
               <Text
-                style={[styles.cardTitle, { marginTop: 0, marginLeft: 50 }]}>
+                style={[styles.cardTitle, { marginTop: 0, marginLeft: 50 }]}
+              >
                 {item.name}
               </Text>
               <Text
-                style={[styles.cardText, { marginTop: 20, marginLeft: 50 }]}>
-                Closest to Earth -{' '}
+                style={[styles.cardText, { marginTop: 20, marginLeft: 50 }]}
+              >
+                Closest to Earth -{" "}
                 {item.close_approach_data[0].close_approach_date_full}
               </Text>
               <Text style={[styles.cardText, { marginTop: 5, marginLeft: 50 }]}>
-                Minimum Diameter (KM) -{' '}
+                Minimum Diameter (KM) -{" "}
                 {item.estimated_diameter.kilometers.estimated_diameter_min}
               </Text>
               <Text style={[styles.cardText, { marginTop: 5, marginLeft: 50 }]}>
-                Maximum Diameter (KM) -{' '}
+                Maximum Diameter (KM) -{" "}
                 {item.estimated_diameter.kilometers.estimated_diameter_max}
               </Text>
               <Text style={[styles.cardText, { marginTop: 5, marginLeft: 50 }]}>
-                Velocity (KM/H) -{' '}
+                Velocity (KM/H) -{" "}
                 {
                   item.close_approach_data[0].relative_velocity
                     .kilometers_per_hour
                 }
               </Text>
               <Text style={[styles.cardText, { marginTop: 5, marginLeft: 50 }]}>
-                Missing Earth by (KM) -{' '}
+                Missing Earth by (KM) -{" "}
                 {item.close_approach_data[0].miss_distance.kilometers}
               </Text>
             </View>
@@ -112,9 +115,10 @@ export default class MeteorScreen extends Component {
         <View
           style={{
             flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Text>Loading</Text>
         </View>
       );
@@ -147,7 +151,7 @@ export default class MeteorScreen extends Component {
             renderItem={this.renderItem}
             horizontal={true}
           />
-          <MyHeader navigation = {this.props.navigation} />
+          <MyHeader navigation={this.props.navigation} />
         </View>
       );
     }
@@ -159,15 +163,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   infoContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    width: Dimensions.get('window').width - 50,
+    width: Dimensions.get("window").width - 50,
     padding: 30,
     alignSelf: "center",
-        shadowColor: '#000',
+    shadowColor: "#000",
     marginBottom: RFValue(10),
     shadowOffset: {
       width: 0,
@@ -178,30 +182,30 @@ const styles = StyleSheet.create({
     elevation: 16,
   },
   droidSafeArea: {
-    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    resizeMode: "cover",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
   titleBar: {
     flex: 0.15,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   titleText: {
     fontSize: 30,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
   meteorContainer: {
     flex: 0.85,
   },
   listContainer: {
-    backgroundColor: 'rgba(52, 52, 52, 0.5)',
-    justifyContent: 'center',
+    backgroundColor: "rgba(52, 52, 52, 0.5)",
+    justifyContent: "center",
     marginLeft: 10,
     marginRight: 10,
     marginTop: 5,
@@ -211,23 +215,23 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 20,
     marginBottom: 10,
-    fontWeight: 'bold',
-    color: 'black',
+    fontWeight: "bold",
+    color: "black",
   },
   cardText: {
-    color: 'black',
+    color: "black",
   },
   threatDetector: {
     height: 10,
     marginBottom: 10,
   },
   gifContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     flex: 1,
   },
   meteorDataContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

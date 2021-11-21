@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Alert, Dimensions } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
-import axios from 'axios';
+import React, { Component } from "react";
+import { View, Text, StyleSheet, Alert, Dimensions } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
+import axios from "axios";
 
-import MyHeader from '../Components/MyHeader';
+import MyHeader from "../Components/MyHeader";
 
 export default class IssLocationScreen extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class IssLocationScreen extends Component {
 
   getIssLocation = () => {
     axios
-      .get('https://api.wheretheiss.at/v1/satellites/25544')
+      .get("https://api.wheretheiss.at/v1/satellites/25544")
       .then((response) => {
         this.setState({ location: response.data });
       })
@@ -41,9 +41,10 @@ export default class IssLocationScreen extends Component {
         <View
           style={{
             flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Text>Loading</Text>
         </View>
       );
@@ -72,16 +73,16 @@ export default class IssLocationScreen extends Component {
 
 const styles = StyleSheet.create({
   infoContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    width: Dimensions.get('window').width - 50,
-    height: Dimensions.get('window')-49,
+    width: Dimensions.get("window").width - 50,
+    height: Dimensions.get("window") - 49,
     padding: 30,
     alignSelf: "center",
-        shadowColor: '#000',
+    shadowColor: "#000",
     marginBottom: RFValue(10),
     shadowOffset: {
       width: 0,
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 15,
-    color: 'black',
-    fontWeight: 'bold',
+    color: "black",
+    fontWeight: "bold",
   },
 });

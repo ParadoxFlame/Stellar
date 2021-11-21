@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -10,12 +10,12 @@ import {
   Alert,
   Image,
   Touchable,
-} from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import axios from 'axios';
-import IssInfo from './IssInfo';
-import MyHeader from "../Components/MyHeader"
-import { TouchableOpacity } from 'react-native-gesture-handler';
+} from "react-native";
+import MapView, { Marker } from "react-native-maps";
+import axios from "axios";
+import IssInfo from "./IssInfo";
+import MyHeader from "../Components/MyHeader";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default class IssLocationScreen extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class IssLocationScreen extends Component {
 
   getIssLocation = () => {
     axios
-      .get('https://api.wheretheiss.at/v1/satellites/25544')
+      .get("https://api.wheretheiss.at/v1/satellites/25544")
       .then((response) => {
         this.setState({ location: response.data });
       })
@@ -45,9 +45,10 @@ export default class IssLocationScreen extends Component {
         <View
           style={{
             flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Text>Loading</Text>
         </View>
       );
@@ -56,8 +57,9 @@ export default class IssLocationScreen extends Component {
         <View style={styles.container}>
           <SafeAreaView style={styles.droidSafeArea} />
           <ImageBackground
-            source={require('../Assets/bg.png')}
-            style={styles.backgroundImage}>
+            source={require("../Assets/bg.png")}
+            style={styles.backgroundImage}
+          >
             <View style={styles.titleContainer}>
               <Text style={styles.titleText}>ISS Location</Text>
             </View>
@@ -69,14 +71,16 @@ export default class IssLocationScreen extends Component {
                   longitude: this.state.location.longitude,
                   latitudeDelta: 100,
                   longitudeDelta: 100,
-                }}>
+                }}
+              >
                 <Marker
                   coordinate={{
                     latitude: this.state.location.latitude,
                     longitude: this.state.location.longitude,
-                  }}>
+                  }}
+                >
                   <Image
-                    source={require('../Assets/iss_icon.png')}
+                    source={require("../Assets/iss_icon.png")}
                     style={{ height: 50, width: 50 }}
                   />
                 </Marker>
@@ -97,27 +101,27 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   droidSafeArea: {
-    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover',
+    resizeMode: "cover",
   },
   titleContainer: {
     flex: 0.1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   titleText: {
     fontSize: 30,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
   mapContainer: {
     flex: 0.6,
   },
   map: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
 });
