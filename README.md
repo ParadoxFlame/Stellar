@@ -1,5 +1,10 @@
 # Stellar
 
+## Running the App
+- Go to [https://snack.expo.dev/@paradoxflame/stellar](https://snack.expo.dev/@paradoxflame/stellar)
+- Click on iOS or Android
+- Interact with the app like you'd do on a phone
+
 ## What Is Our App About?
 
 - Our app uses a NASA API to pull display the real time location of the ISS
